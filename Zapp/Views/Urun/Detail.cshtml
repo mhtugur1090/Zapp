@@ -1,0 +1,27 @@
+﻿@model Zapp.Entity.Urun
+
+<section id="SectionDetail">
+    
+    <div class="container">
+        
+        <h2>@Model.Name</h2>
+        <hr class="ayrac">
+
+        <div id="productDetail" class="clearfix">
+
+            <div class="col">
+                <div class="detail-item">
+                    <img class="img-fluid" src="~/Image/@Model._Image"/>
+                </div>
+            </div>
+            <div class="col">
+                <h3>@Model.Description</h3>
+            </div>
+
+        </div>
+
+        
+    </div>
+
+    
+</section>

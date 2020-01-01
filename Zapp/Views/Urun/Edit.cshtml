@@ -1,0 +1,68 @@
+﻿@model Zapp.Entity.Urun
+@{
+    Layout = null;
+}
+@{
+    Zapp.Entity.DataContext db = new Zapp.Entity.DataContext();
+    var katName = db.Kategoriler.AsQueryable();
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/CSS/adminPagesStyle.css" />
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+    <title>Edit</title>
+</head>
+<body>
+    <div id="edit" class="container">
+
+        <form action="/Urun/Edit" enctype="multipart/form-data" method="post">
+
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Id)
+            @Html.HiddenFor(model => model._Image)
+            <div class="form-group">
+                <label for="Name">Ürün adı</label>
+                <input class="form-control" type="text" name="Name" value="@Model.Name">
+
+            </div>
+            <div class="form-group">
+                <label for="Description">Açıklama</label>
+                <input type="text" class="form-control" name="Description" value="@Model.Description">
+            </div>
+            <div class="form-group">
+                <label for="">Kategori</label>
+                <select name="KategoriId" class="custom-select mr-sm-2">
+                    <option selected value="@Model.KategoriId">@katName.Where(x => x.Id == Model.KategoriId).FirstOrDefault().Name</option>
+
+                    @{
+
+                        var kategoriler = katName.ToList();
+
+
+                        foreach (var kategori in kategoriler)
+                        {
+                            <option value="@kategori.Id">@kategori.Name</option>
+                        }
+
+                    }
+
+
+                </select>
+                @Html.ValidationMessageFor(model => model.KategoriId, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <label for="_Image">Ürün resmi:</label>
+                <input type="file" id="file" class="form-control-file" name="file" >
+            </div>
+            <button type="submit" class="btn btn-primary">Kaydet</button>
+            <a href="/Urun/Index">Listeye dön</a>
+        </form>
+
+    </div>
+</body>
+</html>

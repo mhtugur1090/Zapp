@@ -1,0 +1,38 @@
+﻿@model bool
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+    <title>resultPage</title>
+</head>
+<body>
+    <div>
+
+        @{
+
+            if (Model)
+            {
+                <div class="alert alert-success" role="alert">
+                    Şifre değişimi başarılı!
+                    <a href="/Account">Admin Sayfasına dön</a>
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-danger" role="alert">
+                    Şifre değiştirimi başarısız!
+                    <a href="/Account">Admin Sayfasına dön</a>
+                </div>
+            }
+
+        }
+
+    </div>
+</body>
+</html>

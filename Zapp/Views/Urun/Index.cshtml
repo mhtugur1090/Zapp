@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Zapp.Entity.Urun>
+@{
+    Layout = null;
+
+    Zapp.Entity.DataContext db = new Zapp.Entity.DataContext();
+    var kategoriListe = db.Kategoriler.ToList();
+}
+<link rel="stylesheet" href="~/CSS/adminPagesStyle.css" />
+<link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Urun/Index</title>
+</head>
+<body>
+    <div id="UrunIndex" class="container-fluid clearfix">
+        <header>
+            
+            <h2>
+                <a href="/Urun/Create">Yeni Ürün Ekle</a>
+                <span>
+                    <a href="/Account/Index">Admin Anasayfa</a>
+                    <a href="/Account/Logout">Çıkış</a>
+                </span>
+            </h2>
+            
+            
+            
+        </header>
+
+       
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Ürün ismi</th>
+                        <th scope="col">Tanımı</th>
+                        <th scope="col">Sınıf</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var urun in Model)
+                    {
+                        <tr>
+                            <th scope="row">@urun.Name</th>
+                            <td>@urun.Description</td>
+                            <td>
+                                @kategoriListe.Where(x => x.Id == urun.KategoriId).FirstOrDefault().Name
+
+                            </td>
+                            <td>
+                                <a  href="/Urun/Delete/@urun.Id" class="btn btn-danger buton-sil">sil</a>
+                                <a  href="/Urun/Edit/@urun.Id" class="btn btn-success buton-güncelle">Güncelle</a>
+                            </td>
+                        </tr>
+
+                    }
+
+
+                </tbody>
+            </table>
+       
+
+
+    </div>
+
+
+</body>
+</html>

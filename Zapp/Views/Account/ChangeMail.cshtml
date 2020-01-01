@@ -1,0 +1,51 @@
+﻿@model Zapp.Models.EmailModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ChangeMail</title>
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+
+    <style>
+
+        #FromMail-error{
+            color:red;
+        }
+
+    </style>
+
+</head>
+<body>
+    <div class="container mt-3">
+
+        <form action="/Account/ChangeMail" method="post">
+            <div class="form-group">
+
+                <label for="exampleInputEmail1">Yeni Eposta adresi</label>
+                @Html.TextBoxFor(x => x.FromMail, new { @placeholder = "Eposta" })
+                @Html.ValidationMessageFor(x => x.FromMail)
+            </div>
+            <button type="submit" class="btn btn-primary">Kaydet</button>
+            <a href="/Account">Admin Sayfasına dön</a>
+
+        </form>
+
+    </div>
+
+
+
+    
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    
+    
+
+</body>
+
+</html>

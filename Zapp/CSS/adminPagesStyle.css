@@ -1,0 +1,292 @@
+﻿html {
+font-size:6px;
+}
+.clearfix::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+.container {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: .5rem;
+    padding-right: .5rem;
+}
+.col {
+    float: left;
+    width: 100%;
+    padding: 1rem;
+}
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+    /*div içine yerleştirilen resmin taşmaması için*/
+}
+
+@media (min-width: 576px) {
+
+    .container {
+        max-width: 540px;
+    }
+
+    html {
+        font-size: 7px;
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 720px;
+    }
+
+    html {
+        font-size: 8px;
+    }
+
+    .col {
+        width: 50%;
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        max-width: 960px;
+    }
+
+    html {
+        font-size: 9px;
+    }
+
+    .col {
+        width: 33.3%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+
+    html {
+        font-size: 10px;
+    }
+}
+
+
+/*Log page*/
+#log-form {
+
+    width:100%;
+    height:auto;
+    text-align:center;
+}
+#log-form h2 {
+    text-align: center;
+    font-size: 4rem;
+}
+#log-form .form-group {
+    margin-top: .6rem;
+    font-size:5rem;
+}
+#log-form input {
+
+    font-size:5rem;
+
+    }
+
+
+/*Urun Index page css*/
+#UrunIndex .buton-sil, #UrunIndex .buton-güncelle {
+    width: 15rem;
+    height: auto;
+    font-size: 3rem;
+    display: inline-block;
+    margin: .3rem;
+}
+#UrunIndex h2,a{
+
+    font-size:3rem;
+    padding:2rem;
+}
+#UrunIndex header h2{
+    display:block;
+    
+    padding:2rem;
+}
+#UrunIndex header h2 span {
+
+    float:right;
+}
+
+
+/*Urun Edit page css*/
+#edit * {
+        font-size: 3rem;
+}
+
+
+/*Urun Delete page*/
+#UrunDelete {
+    padding: 2rem 0rem;
+    
+}
+#UrunDelete h2,dt,dd {
+    font-size: 3rem;
+}
+#UrunDelete .buton-sil {
+        width: 15rem;
+        height: auto;
+        font-size: 3rem;
+        display: inline-block;
+        margin: .3rem;
+}
+
+
+/*Account Index page*/
+    #adminPage h2, #adminPage a {
+        font-size: 3rem;
+}
+#adminPage {
+
+    padding:3rem;
+}
+#adminPage div {
+
+    display:block;
+    margin-bottom:4rem;
+
+}
+    #adminPage h2 {
+    display:inline;
+    padding-right:2rem;
+    }
+ 
+
+
+/*KategoriIndex page*/
+#KategoriIndex {
+
+    font-size:3rem;
+}
+#KategoriIndex header h2 {
+        display: block;
+        padding: 2rem;
+    }
+
+#KategoriIndex header h2 span {
+        float: right;
+}
+#KategoriDetails {
+    padding: 2rem;
+    font-size: 3rem;
+}
+#KategoriIndex .buton-sil, #KategoriIndex .buton-güncelle {
+    width: 15rem;
+    height: auto;
+    font-size: 3rem;
+    display: inline-block;
+    margin: .3rem;
+}
+
+/*Kategori Edit page*/
+#KategoriEdit *{
+    font-size:3rem;
+}
+#KategoriEdit {
+padding:2rem;
+}
+#KategoriEdit .buton-güncelle {
+        width: 15rem;
+        height: auto;
+        font-size: 3rem;
+        display: inline-block;
+        margin: .3rem;
+}
+/*Kategori Delete page*/
+
+#KategoriDelete {
+    padding: 2rem 0rem;
+}
+
+#KategoriDelete h2, dt, dd {
+        font-size: 3rem;
+}
+#KategoriDelete .buton-sil {
+        width: 15rem;
+        height: auto;
+        font-size: 3rem;
+        display: inline-block;
+        margin: .3rem;
+}
+/*Slayt Controller*/
+#slaytConrollerPage {
+
+    padding:2rem;
+    display:block;
+    width:100%;
+    height:auto;
+    
+}
+#slaytConrollerPage h2 a{
+
+    font-size:2rem;
+}
+#slaytConrollerPage h2 button {
+        font-size: 2rem;
+}
+#slaytConrollerPage p, h5, a {
+    font-size: 2rem;
+}
+#slaytConrollerPage .image-item {
+        position: relative;
+        max-width:60rem;
+        height:40rem;
+        
+}
+#slaytConrollerPage .left {
+
+float:left;    
+padding-left:2rem;
+}
+.image-item {
+
+    position:relative;
+}
+#slaytConrollerPage .col {
+
+    width:100%;
+}
+
+@media (min-width: 768px) {
+    #slaytConrollerPage .container {
+        max-width: 720px;
+    }
+
+    #slaytConrollerPage html {
+        font-size: 8px;
+    }
+
+    #slaytConrollerPage .col {
+        width: 50%;
+    }
+    #slaytConrollerPage .image-item {
+        position: relative;
+        max-width: 40rem;
+        height: 40rem;
+    }
+}
+
+@media (min-width: 992px) {
+    #slaytConrollerPage .container {
+        max-width: 960px;
+    }
+
+    #slaytConrollerPage html {
+        font-size: 9px;
+    }
+
+    #slaytConrollerPage .col {
+        width: 33.3%;
+    }
+}

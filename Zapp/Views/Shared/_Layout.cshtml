@@ -1,0 +1,157 @@
+﻿<!DOCTYPE html>
+@using Zapp.Entity
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Şahin-Kerestecilik</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/Content/font-awesome.min.css" />
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="~/CSS/StyleSheet1.css" />
+
+    <script>
+
+        @{
+
+            DataContext db = new DataContext();
+            var urunler = db.Urunler.ToList();
+            var keresteler = urunler.Where(x => x.KategoriId == 1);
+        }
+
+    </script>
+
+</head>
+<body>
+
+    <nav>
+        <div class="container clearfix">
+
+            <div id="brand-box">
+                <a href="#" class="brand">
+                    Şahin Kerestecilik
+                </a>
+            </div>
+
+            <div id="navbar-links" class="res">
+                <ul>
+
+                    <li class="nav-item">
+                        <a href="/Home/Contact" class="nav-link nav-icon">
+                            <i class="fa fa-bars" aria-hidden="true"></i>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="/Home" class="nav-link">
+                            ANASAYFA
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/Home/About" class="nav-link">
+                            HAKKIMIZDA
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#" >
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">KERESTELER</a>
+                            <div class="dropdown-menu">
+                                @foreach (var urun in keresteler)
+                                {
+                                    <a class="dropdown-item" href="/Urun/Detail/@urun.Id">@urun.Name</a>
+                                }
+
+
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">DİĞER</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="/Home">-</a>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/Home/Contact" class="nav-link">
+                            İLETİŞİM
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+
+        </div>
+
+    </nav>
+
+    <header>
+        
+            @Html.Partial("_carousel")
+
+    </header>
+
+    @RenderBody()
+
+    <footer>
+        <div class="container-fluid clearfix">
+            <div class="col">
+                    <p>
+                        <i class="fa fa-phone-square ikon" aria-hidden="true"></i> +90 533 666 66 30
+
+                    </p>
+            </div>
+            <div class="col">
+                Copyright &copy Şahin Kereste @DateTime.Now.Year .
+            </div>
+            <div class="col">
+                <a href="#"><i class="fab fa-instagram ikon" aria-hidden="true"></i></a>
+                <a href="#"><i class="fab fa-facebook ikon" aria-hidden="true"></i></a>
+                <a href="#"><i class="fab fa-twitter ikon" aria-hidden="true"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="https://unpkg.com/popper.js@1.16.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+    <script>
+
+        $(function () {
+
+            $('.nav-icon').click(function () {
+                $('#navbar-links').toggleClass("res");
+                return false;/*tıklamadan sonra
+                 * hemen değişmemesi için
+                 * bunu yazmaz isek hemen res sınıfını ekleyip kaldırır.
+                 * */
+            });
+
+        });
+
+        
+    </script>
+
+</body>
+
+    
+    
+    </html>
+
+

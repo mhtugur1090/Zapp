@@ -1,0 +1,61 @@
+﻿@model Zapp.Models.EmailModel
+@{
+    ViewBag.Title = "Contact";
+}
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+<section id="contact">
+
+    <div class="container">
+        <h2>İLETİŞİM</h2>
+        <hr class="ayrac">
+
+        @using (Html.BeginForm("MailSending", "Email", FormMethod.Post, new { @id = "mailForm" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-group">
+
+                @Html.TextBoxFor(x => x.FromName, new { @placeholder = "İsim" })
+                @Html.ValidationMessageFor(x => x.FromName)
+
+
+            </div>
+            <div class="form-group">
+
+                @Html.TextBoxFor(x => x.FromMail, new { @placeholder = "Eposta" })
+                @Html.ValidationMessageFor(x => x.FromMail)
+
+            </div>
+
+            <div class="form-group">
+
+                @Html.TextAreaFor(x => x.FromMessage, new { @placeholder = "Mesajınız" })
+                @Html.ValidationMessageFor(x => x.FromMessage)
+
+            </div>
+
+            <div>
+                <button type="submit" class="btn btn-primary">Gönder</button>
+            </div>
+        }
+    </div>
+    <div class="container mt-4">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193.18585070830324!2d26.786760348195546!3d39.220765043015604!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14ba732461a99cff%3A0x656af1cc1cce308b!2zQWx0aW5vdmEsIEFsdMSxbm92YSwgMTA0MDAgQXl2YWzEsWsvQmFsxLFrZXNpcg!5e0!3m2!1sen!2str!4v1573463341088!5m2!1sen!2str"
+                width="100%"
+                height="270px;"
+                frameborder="0"
+                style="border:0;"
+                allowfullscreen=""></iframe>
+    </div>
+
+</section>
+
+
+
+
+
+
+

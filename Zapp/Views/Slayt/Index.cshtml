@@ -1,0 +1,107 @@
+﻿@model IEnumerable<string>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/CSS/adminPagesStyle.css" rel="stylesheet"/>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Index</title>
+</head>
+<body>
+
+    
+
+    
+        
+    
+
+    <div id="slaytConrollerPage" class="clearfix">
+
+        <h2>
+            <span>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    Resim Ekle
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Resim Ekle</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+
+                            <form action="/Slayt/SaveImageToFolder" method="post" enctype="multipart/form-data">
+                                <div class="modal-body">
+
+                                    <div class="form-group">
+                                        <input type="file" id="file" class="form-control-file" name="file">
+                                    </div>
+
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                                    <button type="submit" class="btn btn-primary">Ekle</button>
+                                </div>
+
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+                <a href="/Account/Index">Admin Sayfasına dön</a>
+            </span>
+        </h2>
+        @foreach (var image in Model)
+        {
+            <div class="col">
+                <div class="image-item">
+
+                    <img class="img-fluid" src="@Url.Content(image)">
+                    <div class="image-item">
+                        <a id="deleteLink" onclick="deleteImg('@Url.Content(image).ToString()')">Resmi kaldır</a>
+                    </div>
+                </div>
+            </div>
+
+        }
+
+
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+        <script>
+
+                
+            
+                function deleteImg(a)
+                {
+
+                    $.post("@Url.Action("DeleteImageFromFolder","Slayt")", { path: a + "" }, function (re) {
+
+                        location.reload();
+
+                    });
+                    
+                }
+           
+                
+
+                    
+             
+
+        </script>
+</body>
+</html>

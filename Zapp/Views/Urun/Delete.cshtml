@@ -1,0 +1,68 @@
+﻿@model Zapp.Entity.Urun
+@{
+    Layout = null;
+}
+@{
+    Zapp.Entity.DataContext db = new Zapp.Entity.DataContext();
+    var katName = db.Kategoriler.Where(x => x.Id == Model.KategoriId).FirstOrDefault().Name;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Ürün sil</title>
+    <link rel="stylesheet" href="~/CSS/adminPagesStyle.css" />
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+</head>
+<body>
+    <div id="UrunDelete">
+
+        <div class="alert alert-danger" role="alert">
+            <h2>Ürünü silmek istiyor musunuz?</h2>
+        </div>
+
+        <div class="container-fluid">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Description)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Description)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.KategoriId)
+                </dt>
+
+                <dd>
+                    @katName
+                </dd>
+
+                @using (Html.BeginForm("Delete", "Urun", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-actions no-color">
+                        <input type="submit" value="Sil" class="btn btn-danger buton-sil" /> &nbsp
+                        <a href="/Urun/Index">Listeye dön</a>
+                    </div>
+                }
+
+            </dl>
+        </div>
+
+
+    </div>
+</body>
+</html>

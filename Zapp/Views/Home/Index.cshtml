@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Zapp.Models.UrunModel>
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<section id="products">
+    <div class="container">
+        <h2 class="text-uppercase">ürünler</h2>
+        <hr class="ayrac">
+
+        <div id="products-images" class="clearfix">
+            @if (Model.Count() >= 4)
+            {
+                foreach (var urun in Model.Take(3))
+                {
+                    <div class="col">
+                        <div class="product-item">
+                            <a href="/Urun/Detail/@urun.Id">
+                                <img class="img-fluid" src="~/Image/@urun._Image">
+                                <div class="img-overlay">
+
+                                    <div class="icon">
+                                        @urun.Name <br />
+                                        <i class="fas fa-search" style="font-size: 20px;"></i>
+                                    </div>
+
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                foreach (var urun in Model)
+                {
+                    <div class="col">
+                        <div class="product-item">
+                            <a href="#">
+                                <img class="img-fluid" src="~/Image/@urun._Image">
+                                <div class="img-overlay">
+
+                                    <div class="icon">
+                                        @urun.Name <br />
+                                        <i class="fas fa-search" style="font-size: 20px;"></i>
+                                    </div>
+
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                }
+            }
+
+        </div>
+
+    </div>
+</section>
+
+
+
